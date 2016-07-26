@@ -62,3 +62,5 @@ Intermediate/*
 DerivedDataCache/*
 
 *.VC.db
+
+/Content/KiteDemo/
