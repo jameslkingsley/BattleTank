@@ -1,4 +1,5 @@
 #include "BattleTank.h"
+#include "Tank.h"
 #include "TankPlayerController.h"
 
 void ATankPlayerController::BeginPlay() {
@@ -27,7 +28,7 @@ void ATankPlayerController::AimTowardsCrosshair() const {
 
     FVector HitLocation;
     if (GetSightRayHitLocation(HitLocation)) {
-        UE_LOG(LogTemp, Warning, TEXT("Hit: %s"), *(HitLocation.ToString()));
+        GetControlledTank()->AimAt(HitLocation);
     }
 
     return;

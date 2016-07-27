@@ -1,4 +1,5 @@
 #include "BattleTank.h"
+#include "Tank.h"
 #include "TankAIController.h"
 
 void ATankAIController::BeginPlay() {
@@ -10,6 +11,13 @@ void ATankAIController::BeginPlay() {
     } else {
         UE_LOG(LogTemp, Error, TEXT("AI Controller: Can't find player"));
     }
+}
+
+void ATankAIController::Tick(float DeltaTime) {
+    Super::Tick(DeltaTime);
+    
+    auto PlayerTank = GetPlayerTank();
+    GetControlledTank()->AimAt(PlayerTank->GetActorLocation());
 }
 
 ATank* ATankAIController::GetControlledTank() const {
